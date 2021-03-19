@@ -92,8 +92,8 @@ public class Main {
                         case (3):
                             System.out.print("--------------------\n");
                             System.out.print("What position you want to change? (from 0 to " + (Drinks.size() - 1) + ")\n");
-                            Drinks.get(cin2.nextInt()).ChangeConfiguration();
                             System.out.print("--------------------\n");
+                            Drinks.get(cin2.nextInt()).ChangeConfiguration();
 
                             break;
                         case (4):

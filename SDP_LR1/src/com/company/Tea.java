@@ -9,6 +9,9 @@ import java.util.Scanner;
 public class Tea implements Drink {
     int Sugar = 0;
     String Producer = "None", Type = "None";
+
+    String path = "C:\\Users\\CRINUM\\Desktop\\Java\\SDP_LR1\\src\\com\\company\\tea.txt";
+
     Scanner cin = new Scanner(System.in);
     Scanner cin2 = new Scanner(System.in);
 
@@ -18,9 +21,9 @@ public class Tea implements Drink {
         System.out.println("Choosed type of tea: " + Type);
         System.out.print("Available producers for this type of tea:\n");
         findProducer(Type);
-        System.out.print("Type name of producer (start with small letter and try not to make mistakes)\n");
         System.out.print("--------------------\n");
-        Producer = cin2.nextLine();
+
+        Producer = returnProducer(cin2.nextInt());
     };
 
     public void AddSugar()
@@ -40,7 +43,7 @@ public class Tea implements Drink {
         name = Type + "_" + Producer;
 
         try {
-            File file = new File("C:\\Users\\CRINUM\\Desktop\\Java\\SDP_LR1\\src\\com\\company\\tea.txt");
+            File file = new File(path);
 
             FileReader fr = new FileReader(file);
 
@@ -97,6 +100,7 @@ public class Tea implements Drink {
                 break;
             case (3):
                 ChooseType();
+                ChooseProducer();
                 break;
             default:
                 break;
@@ -130,8 +134,8 @@ public class Tea implements Drink {
         System.out.println("Current state: " + Type);
         System.out.print("--------------------\n");
         System.out.print("What type of tea you want?\n" +
-                "1 - green\n" +
-                "2 - black\n" +
+                "1 - Green\n" +
+                "2 - Black\n" +
                 "Any other number - Back\n");
         System.out.print("--------------------\n");
 
@@ -140,6 +144,7 @@ public class Tea implements Drink {
         {
             case (1):
                 Type = "green";
+                break;
             case (2):
                 Type = "black";
                 break;
@@ -151,27 +156,63 @@ public class Tea implements Drink {
     private void findProducer(String s)
     {
         try {
-            File file = new File("C:\\Users\\CRINUM\\Desktop\\Java\\SDP_LR1\\src\\com\\company\\tea.txt");
+            File file = new File(path);
 
             FileReader fr = new FileReader(file);
 
             BufferedReader reader = new BufferedReader(fr);
 
             String line = reader.readLine();
+
+            int n = 0;
             while (line != null) {
                 if (line.contains(s))
                 {
                     int begin = line.indexOf('_') + 1;
                     int end = line.indexOf('-');
 
-                    System.out.println(line.substring(begin, end));
+                    System.out.println(n + ". " + line.substring(begin, end));
                 }
                 line = reader.readLine();
+                n++;
             }
         }
         catch (IOException e) {
             e.printStackTrace();
         }
+    };
+
+    private String returnProducer(int a)
+    {
+        String res = "0";
+        try {
+            File file = new File(path);
+
+            FileReader fr = new FileReader(file);
+
+            BufferedReader reader = new BufferedReader(fr);
+
+            String line = reader.readLine();
+
+            int n = 0;
+            while (line != null) {
+                if (n == a)
+                {
+                    int begin = line.indexOf('_') + 1;
+                    int end = line.indexOf('-');
+
+                    res = line.substring(begin, end);
+                    break;
+                }
+
+                line = reader.readLine();
+                n++;
+            }
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        return res;
     };
 
     public void PrintOrder()

@@ -10,6 +10,9 @@ public class Coffee implements Drink {
     int Sugar = 0;
     String Producer = "None";
     int Milk = 0;
+
+    String path = "C:\\Users\\CRINUM\\Desktop\\Java\\SDP_LR1\\src\\com\\company\\coffee.txt";
+
     Scanner cin = new Scanner(System.in);
     Scanner cin2 = new Scanner(System.in);
 
@@ -17,10 +20,9 @@ public class Coffee implements Drink {
         System.out.print("--------------------\n");
         System.out.print("Available coffee producers:\n");
         findProducer();
-        System.out.print("Type name of producer (start with small letter and try not to make mistakes)\n");
         System.out.print("--------------------\n");
 
-        Producer = cin2.nextLine();
+        Producer = returnProducer(cin2.nextInt());
     }
 
     public void AddSugar() {
@@ -40,7 +42,7 @@ public class Coffee implements Drink {
         String temp = "0";
 
         try {
-            File file = new File("C:\\Users\\CRINUM\\Desktop\\Java\\SDP_LR1\\src\\com\\company\\coffee.txt");
+            File file = new File(path);
 
             FileReader fr = new FileReader(file);
 
@@ -139,23 +141,56 @@ public class Coffee implements Drink {
 
     private void findProducer() {
         try {
-            File file = new File("C:\\Users\\CRINUM\\Desktop\\Java\\SDP_LR1\\src\\com\\company\\coffee.txt");
+            File file = new File(path);
+
+            FileReader fr = new FileReader(file);
+
+            BufferedReader reader = new BufferedReader(fr);
+
+            int n = 0;
+            String line = reader.readLine();
+            while (line != null)
+            {
+                int end = line.indexOf('-');
+
+                System.out.println(n + ". " + line.substring(0, end));
+                line = reader.readLine();
+                n++;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private String returnProducer(int a) {
+        String res = "0";
+
+        try {
+            File file = new File(path);
 
             FileReader fr = new FileReader(file);
 
             BufferedReader reader = new BufferedReader(fr);
 
             String line = reader.readLine();
+
+            int n = 0;
             while (line != null)
             {
-                int end = line.indexOf('-');
+                if (n == a) {
+                    int end = line.indexOf('-');
+                    res = line.substring(0, end);
 
-                System.out.println(line.substring(0, end));
+                    break;
+                }
+
                 line = reader.readLine();
+                n++;
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return res;
     }
 
     public void PrintOrder() {

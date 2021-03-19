@@ -1,6 +1,6 @@
-green_greenfield-30
-green_tess-20
-green_lipton-15
-black_greenfield-30
-black_tess-25
-black_curtis-20
+green_Greenfield-30
+green_Tess-20
+green_Lipton-15
+black_Greenfield-30
+black_Tess-25
+black_Curtis-20
