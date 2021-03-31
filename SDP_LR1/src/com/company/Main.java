@@ -3,14 +3,17 @@ package com.company;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+//Главная класс
 public class Main {
 
+    //Главная функция
     public static void main(String[] args) {
         ArrayList<Drink> Drinks = new ArrayList<Drink>();
         Scanner cin = new Scanner(System.in);
         Scanner cin2 = new Scanner(System.in);
         int j = 1, k = 1, price = 0;
 
+        //Пользовательский интерфейс
         System.out.print("Welcome customer!\n");
         while (j != 0)
         {

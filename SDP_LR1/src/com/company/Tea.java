@@ -10,11 +10,13 @@ public class Tea implements Drink {
     int Sugar = 0;
     String Producer = "None", Type = "None";
 
+    //ВНИМАНИЕ!!! Измените путь файла для вашего компьютера
     String path = "C:\\Users\\CRINUM\\Desktop\\Java\\SDP_LR1\\src\\com\\company\\tea.txt";
 
     Scanner cin = new Scanner(System.in);
     Scanner cin2 = new Scanner(System.in);
 
+    //Метод выбора производителя
     public void ChooseProducer()
     {
         System.out.print("--------------------\n");
@@ -26,6 +28,7 @@ public class Tea implements Drink {
         Producer = returnProducer(cin2.nextInt());
     };
 
+    //Метод добавления сахара
     public void AddSugar()
     {
         System.out.print("--------------------\n");
@@ -35,6 +38,7 @@ public class Tea implements Drink {
         Sugar = cin.nextInt();
     };
 
+    //Метод расчета стоимости
     public int CalculateCost()
     {
         int res = 0;
@@ -69,6 +73,7 @@ public class Tea implements Drink {
         return res;
     };
 
+    //Метод изменения конфигурации
     public void ChangeConfiguration()
     {
         int c;
@@ -107,6 +112,7 @@ public class Tea implements Drink {
         }
     };
 
+    //Индивидуальные методы класса
     public void IndividMethods()
     {
         int c;
@@ -127,6 +133,7 @@ public class Tea implements Drink {
         }
     };
 
+    //Выбор производителя чая
     public void ChooseType()
     {
         int c;
@@ -153,6 +160,7 @@ public class Tea implements Drink {
         }
     };
 
+    //Метод поиска производителя
     private void findProducer(String s)
     {
         try {
@@ -182,6 +190,7 @@ public class Tea implements Drink {
         }
     };
 
+    //Метод, возвращающий имя производителя
     private String returnProducer(int a)
     {
         String res = "0";
@@ -215,6 +224,7 @@ public class Tea implements Drink {
         return res;
     };
 
+    //Метод вывода заказа
     public void PrintOrder()
     {
         System.out.println(Type + " tea, " + Producer + ", Sugar: " + Sugar);

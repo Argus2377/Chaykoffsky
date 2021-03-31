@@ -1,13 +1,10 @@
 package com.company;
 
-//Интерфейс напитки
-public interface Drink extends Product{
-
+//Интерфейс продукты
+public interface Product{
     public void ChooseProducer();
-    public void AddSugar();
     public int CalculateCost();
     public void ChangeConfiguration();
     public void IndividMethods();
     public void PrintOrder();
-
 }

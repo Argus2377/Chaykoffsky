@@ -11,11 +11,13 @@ public class Coffee implements Drink {
     String Producer = "None";
     int Milk = 0;
 
+    //ВНИМАНИЕ!!! Измените путь файла для вашего компьютера
     String path = "C:\\Users\\CRINUM\\Desktop\\Java\\SDP_LR1\\src\\com\\company\\coffee.txt";
 
     Scanner cin = new Scanner(System.in);
     Scanner cin2 = new Scanner(System.in);
 
+    //Метод выбора производителя
     public void ChooseProducer() {
         System.out.print("--------------------\n");
         System.out.print("Available coffee producers:\n");
@@ -25,6 +27,7 @@ public class Coffee implements Drink {
         Producer = returnProducer(cin2.nextInt());
     }
 
+    //Метод добавления сахара
     public void AddSugar() {
         System.out.print("--------------------\n");
         System.out.println("Current state: " + Sugar);
@@ -37,6 +40,7 @@ public class Coffee implements Drink {
         Sugar = cin.nextInt();
     }
 
+    //Метод расчета стоимости
     public int CalculateCost() {
         int res = 0;
         String temp = "0";
@@ -68,6 +72,7 @@ public class Coffee implements Drink {
         return res;
     }
 
+    //Метод изменения конфигурации
     public void ChangeConfiguration() {
         int c;
         System.out.print("--------------------\n");
@@ -94,6 +99,7 @@ public class Coffee implements Drink {
         }
     }
 
+    //Индивидуальные методы класса
     public void IndividMethods() {
         int c;
         System.out.print("--------------------\n");
@@ -116,6 +122,7 @@ public class Coffee implements Drink {
         }
     }
 
+    //Выбор производителя чая
     public void AddMilk() {
         int c;
         System.out.print("--------------------\n");
@@ -139,6 +146,7 @@ public class Coffee implements Drink {
         }
     }
 
+    //Метод поиска производителя
     private void findProducer() {
         try {
             File file = new File(path);
@@ -162,6 +170,7 @@ public class Coffee implements Drink {
         }
     }
 
+    //Метод, возвращающий имя производителя
     private String returnProducer(int a) {
         String res = "0";
 
@@ -193,6 +202,7 @@ public class Coffee implements Drink {
         return res;
     }
 
+    //Метод вывода заказа
     public void PrintOrder() {
         if (Milk == 1) {
             System.out.println("Coffee with milk, " + Producer + ", Sugar: " + Sugar);
